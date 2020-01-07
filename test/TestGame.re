@@ -59,27 +59,40 @@ describe("Test Game transitions", ({test}) => {
       Forty(fortyFifteen)
     );
   });
+  
+ 
+ 
   test(
     "Given player: 15 | other : 15 when player wins then score is 30/15",
-    ({expect})) => {
+    ({expect}) => {
     let fifteenFifteen = {playerOne: Fifteen, playerTwo: Fifteen};
     let thirtyFifteen = {playerOne: Thirty, playerTwo: Fifteen};
     expect.equal(
       scoreWhenPoints(fifteenFifteen, PlayerOne),
       Points(thirtyFifteen)
-    );
-    expect(scoreWhenPoints(fifteenFifteen, PlayerOne))
-    |> toEqual(Points(thirtyFifteen));
+    );   
   });
 
-  test("Given player: 0 | other : 15 when other wins then score is 0/30",
-  ({expect})) => {
-    /* YOUR TURN TO DO THE TEST */
+test("Given player: 0 | other : 15 when other wins then score is 0/30",
+  ({expect}) => {
+   let loveFifteen = {playerOne: Fifteen, playerTwo: Love};
+   let loveThirty = {playerOne: Thirty, playerTwo: Love};
+    expect.equal(
+      scoreWhenPoints(loveFifteen, PlayerOne),
+      Points(loveThirty)
+    );   
   });
-  test(
+
+test(
     "Given player: 30 | other : 15 when player wins then score is 40/15",
-    ({expect})) => {
-    /* YOUR TURN TO DO THE TEST */
+    ({expect}) => {
+    let thirtyFifteen = {playerOne: Thirty, playerTwo: Fifteen};
+   let fortyFifteen = {player: PlayerOne, otherPlayerPoint: Fifteen};
+    expect.equal(
+      scoreWhenPoints(thirtyFifteen, PlayerOne),
+      Forty(fortyFifteen)
+    );  
   });
+  
 });
 
