@@ -84,4 +84,34 @@ let scoreWhenPoints = (current, winner) =>
   | Game(g) => scoreWhenGame(g)
   };
 
+let string_of_player : (player) => string = p=>
+switch p {
+| PlayerOne => "Je suis le PlayerOne"
+| PlayerTwo => "Je suis le PlayerTwo"
+};
 
+let string_of_point : (point)=>string = s=>
+switch s {
+  | Love => "Love"
+  | Fifteen => "Fifteen points"
+  | Thirty => "Thirty points";
+
+};
+
+let string_of_fortyData: (fortyData)=>string = s=>
+switch s.player {
+  | PlayerOne=> "Je suis player one avec 40 points, " ++ "Je suis player 2 avec " ++ string_of_point(s.otherPlayerPoint);
+  | PlayerTwo=>"Je suis player two avec 40 points, " ++ "Je suis player 1 avec " ++ string_of_point(s.otherPlayerPoint);
+
+};
+
+
+ 
+let string_of_score : (score)=>string = s=>
+switch s {
+| Points(pointsData) => "Je suis le player one avec " ++ string_of_point(pointsData.playerOne) ++ "Je suis le player 2 avec " ++  string_of_point(pointsData.playerTwo)
+| Forty(fortyData) => string_of_fortyData(fortyData)
+| Deuce => "Egalité player 1 et player 2 avec 40 points."
+| Advantage(player) => string_of_player(player) ++ " a l'avantage  "
+| Game(player) =>string_of_player(player) ++ "a remporte le jeu" ;
+};
